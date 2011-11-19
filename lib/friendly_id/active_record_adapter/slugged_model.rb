@@ -21,7 +21,7 @@ module FriendlyId
       include FriendlyId::Slugged::Model
 
       def find_slug(name, sequence)
-        slugs.find_by_name_and_sequence(name, sequence)
+        slugs.find_by_name_and_sequence_and_locale(name, sequence, Thread.current[:globalize_locale] || ::I18n.locale)
       end
 
       # Returns the friendly id, or if none is available, the numeric id. Note that this
